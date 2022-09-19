@@ -11,14 +11,14 @@ public class ScoreBoardMessage {
 
     private final String title;
 
-    private ArrayList<String> lore;
+    private ArrayList<String> lore = new ArrayList<>();
+
 
     public ScoreBoardMessage(String title){
         this.title = title;
     }
 
-    public ScoreBoardMessage(String title, ArrayList<String> lore){
-        this.title = title;
+    public void setLore(ArrayList<String> lore) {
         this.lore = lore;
     }
 
@@ -28,9 +28,5 @@ public class ScoreBoardMessage {
 
     public ArrayList<String> getLore() {
         return lore;
-    }
-
-    public void setLore(ArrayList<String> lore) {
-        this.lore = lore;
     }
 }
