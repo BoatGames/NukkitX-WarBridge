@@ -18,8 +18,8 @@ import org.sobadfish.warbridge.room.WorldRoom;
 import org.sobadfish.warbridge.room.config.GameRoomConfig;
 
 /**
- * @author SoBadFish
- * 2022/1/12
+ * @author SoBadFish&GouDan888
+ * 2022/9/20
  */
 public class WarBridgeCommand extends Command {
 
@@ -45,8 +45,8 @@ public class WarBridgeCommand extends Command {
                         "趁着敌人疏忽防守,凭借高超的跑搭和侧搭技巧,\n" +
                         "向敌人发起最后一击,哪怕是付出生命代价。", DisPlayWindowsFrom.getId(51530, 99810));
                 PlayerInfo finalInfo = info;
-                /*simple.add(new BaseIButtom(new ElementButton("随机匹配",new ElementButtonImageData("path","textures/ui/dressing_room_skins"))) {*/
-                simple.add(new BaseIButtom(new ElementButton("随机匹配")) {
+                //simple.add(new BaseIButtom(new ElementButton("随机匹配",new ElementButtonImageData("path","textures/ui/dressing_room_skins"))) {*/
+                simple.add(new BaseIButtom(new ElementButton("§l§5随机匹配")) {
                     @Override
                     public void onClick(Player player) {
                         RandomJoinManager.joinManager.join(finalInfo,null);
@@ -140,7 +140,7 @@ public class WarBridgeCommand extends Command {
         WorldRoom worldRoom = WarBridgeMain.getMenuRoomManager().getRoom(name);
         PlayerInfo info = new PlayerInfo(player);
         //simple.add(new BaseIButtom(new ElementButton("随机匹配",new ElementButtonImageData("path","textures/ui/dressing_room_skins"))) {
-        simple.add(new BaseIButtom(new ElementButton("随机匹配")) {
+        simple.add(new BaseIButtom(new ElementButton("§5随机匹配")) {
             @Override
             public void onClick(Player player) {
                 RandomJoinManager.joinManager.join(info,null);
