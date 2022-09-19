@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: C:\Users\29347\Documents\GitHub\WarBridge\src\main\java\org\
+ sobadfish\warbridge\WarBridgeMain.java
+
