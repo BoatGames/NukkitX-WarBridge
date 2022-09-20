@@ -211,7 +211,8 @@ public class GameRoom {
         if(event.isCancelled()){
             return JoinType.NO_JOIN;
         }
-
+        info.sendForceTitle("",1);
+        info.sendForceSubTitle("");
         sendMessage(info+"&e加入了游戏 &7("+(playerInfos.size()+1)+"/"+getRoomConfig().getMaxPlayerSize()+")");
         info.init();
         info.getPlayer().getInventory().setItem(TeamChoseItem.getIndex(),TeamChoseItem.get());
@@ -463,7 +464,7 @@ public class GameRoom {
      * */
     public boolean quitPlayerInfo(PlayerInfo info,boolean teleport){
         if(info != null) {
-
+            info.isLeave = true;
             if (info.getPlayer() instanceof Player) {
                 if (playerInfos.contains(info)) {
                     PlayerQuitRoomEvent event = new PlayerQuitRoomEvent(info, this,WarBridgeMain.getWarBridgeMain());
@@ -790,14 +791,13 @@ public class GameRoom {
 
 
     private Long lastTime = 0L;
-    //3秒内不加分
+    //1秒内不加分
     public void addScore(PlayerInfo playerInfo){
         TeamInfo teamInfo = playerInfo.getTeamInfo();
-        if(lastTime == 0){
-            lastTime = System.currentTimeMillis();
-        }
-        if(System.currentTimeMillis() - lastTime < 2000){
+        if(System.currentTimeMillis() - lastTime < 1000){
             return;
+        }else{
+            lastTime = System.currentTimeMillis();
         }
         for(TeamInfo t: getTeamInfos()){
             if(t.hasScore){
