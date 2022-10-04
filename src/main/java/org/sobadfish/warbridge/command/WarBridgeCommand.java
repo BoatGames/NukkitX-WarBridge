@@ -46,12 +46,12 @@ public class WarBridgeCommand extends Command {
                         "向敌人发起最后一击,哪怕是付出生命代价。", DisPlayWindowsFrom.getId(51530, 99810));
                 PlayerInfo finalInfo = info;
                 //simple.add(new BaseIButtom(new ElementButton("随机匹配",new ElementButtonImageData("path","textures/ui/dressing_room_skins"))) {*/
-                simple.add(new BaseIButtom(new ElementButton("§l§5随机匹配")) {
+                /*simple.add(new BaseIButtom(new ElementButton("§l§5随机匹配")) {
                     @Override
                     public void onClick(Player player) {
                         RandomJoinManager.joinManager.join(finalInfo,null);
                     }
-                });
+                });*/
                 for (String wname : WarBridgeMain.getMenuRoomManager().getNames()) {
                     WorldRoom worldRoom = WarBridgeMain.getMenuRoomManager().getRoom(wname);
                     int size = 0;
