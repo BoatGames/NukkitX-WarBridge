@@ -587,39 +587,55 @@ public class PlayerInfo {
             levelName = " -- ";
         }
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        lore.add("&7"+format.format(new Date()));
-        lore.add("游戏模式: &a"+levelName);
+        //lore.add("&7"+format.format(new Date()));
+        //lore.add("游戏模式: &a"+levelName);
 
-        lore.add(" ");
+
+        //lore.add(" ");
         if(isWait){
-            lore.add("玩家数: &a"+gameRoom.getPlayerInfos().size()+" &r/&a "+gameRoom.getRoomConfig().getMaxPlayerSize());
-            lore.add("等待中....");
-            lore.add("   ");
+            //lore.add("玩家数: &a"+gameRoom.getPlayerInfos().size()+" &r/&a "+gameRoom.getRoomConfig().getMaxPlayerSize());
+            //lore.add("等待中....");
+            //lore.add("   ");
+            lore.add("\uE175 "+gameRoom.getPlayerInfos().size()+"&7/"+gameRoom.getRoomConfig().getMaxPlayerSize());
 
         }else{
 
-            lore.add("剩余时间: &a"+formatTime1(getGameRoom().loadTime));
-            lore.add("    ");
+            //lore.add("剩余时间: &a"+formatTime1(getGameRoom().loadTime));
+            //lore.add("    ");
+            //队伍
+            if(this.teamInfo != null){
+                //lore.add(this.teamInfo+"队".toString());
+                lore.add(this.teamInfo.getTeamConfig().getNameUnicode()
+                        + " "
+                        + teamInfo);
+            }else{
+                lore.add("\uE18E 吃瓜小分队");
+            }
+
             for(TeamInfo teamInfo: gameRoom.getTeamInfos()){
                 String me = "";
                 if(getTeamInfo() != null && getTeamInfo().equals(teamInfo)){
                     me = "&7(我)";
                 }
-                lore.add("◎ "+ teamInfo +": &r  &c"+ Utils.getLine(5,Utils.getPercent(teamInfo.score,5),teamInfo.getTeamConfig().getNameColor()+"●","&7●") +me);
+                lore.add("&r"+Utils.getLine(5,Utils.getPercent(teamInfo.score,5),teamInfo.getTeamConfig().getNameUnicode(),"\uE197"));
             }
-            lore.add("       ");
-            lore.add("&b击杀数: &a"+killCount);
-            lore.add("&e助攻数: &a"+assists);
 
-            lore.add("         ");
+            //lore.add("       ");
+            //lore.add("&b击杀数: &a"+killCount);
+            lore.add("\uE184 " + killCount);
+            //lore.add("&e助攻数: &a"+assists);
+
+            //lore.add("         ");
+            //lore.add("剩余时间: &a"+formatTime1(getGameRoom().loadTime));
+            lore.add("\uE182 " + formatTime1(getGameRoom().loadTime));
         }
         Object obj = WarBridgeMain.getWarBridgeMain().getConfig().get("game-logo");
         if(obj instanceof List){
             for(Object s : (List<?>)obj){
-                lore.add(s.toString());
+                //lore.add(s.toString());
             }
         }else{
-            lore.add(WarBridgeMain.getWarBridgeMain().getConfig().getString("game-logo","&l&cT&6o&eC&ar&ba&9f&dt"));
+            //lore.add(WarBridgeMain.getWarBridgeMain().getConfig().getString("game-logo","&l&cT&6o&eC&ar&ba&9f&dt"));
         }
         return lore;
     }
@@ -642,12 +658,30 @@ public class PlayerInfo {
             if(!player.isImmobile() && !isWatch()) {
                 player.setImmobile(true);
             }
-            sendTitle(gameRoom.cause, 2);
-            sendSubTitle("&7将在&a"+gameRoom.gameStart+"&7秒后开始");
+            switch (gameRoom.gameStart){
+                       /* case 10: sendTitle("");sendActionBar("&e游戏开始 » ▌▌▌▌▌▌▌▌▌▌ &r"+waitTime);break;
+                        case 9: sendActionBar("&e游戏开始 ≫ ▌▌▌▌▌▌▌▌▌&7▌ &r"+waitTime);break;
+                        case 8: sendActionBar("&e游戏开始 ≫ ▌▌▌▌▌▌▌▌&7▌▌ &r"+waitTime);break;
+                        case 7: sendActionBar("&e游戏开始 ≫ ▌▌▌▌▌▌▌&7▌▌▌ &r"+waitTime);break;
+                        case 6: sendActionBar("&e游戏开始 ≫ ▌▌▌▌▌▌&7▌▌▌▌ &r"+waitTime);break;*/
+                /*case 5: sendActionBar("&e游戏开始 ≫ ▌▌▌▌▌ &r"+gameRoom.gameStart);break;
+                case 4: sendActionBar("&e游戏开始 ≫ ▌▌▌▌&8▌ &r"+gameRoom.gameStart);break;*/
+                /*case 3: sendActionBar("&e游戏开始 ≫ &c▌▌▌&8▌▌ &r"+gameRoom.gameStart);addSound(Sound.RANDOM_TOAST);break;
+                case 2: sendActionBar("&e游戏开始 ≫ &c▌▌&8▌▌▌ &r"+gameRoom.gameStart);addSound(Sound.RANDOM_TOAST);break;
+                case 1: sendActionBar("&e游戏开始 ≫ &c▌&8▌▌▌▌ &r"+gameRoom.gameStart);addSound(Sound.RANDOM_TOAST);break;*/
+                case 3: sendTitle("");sendSubTitle("\uE1F3");addSound(Sound.RANDOM_TOAST);break;
+                case 2: sendTitle("");sendSubTitle("\uE1F2");addSound(Sound.RANDOM_TOAST);break;
+                case 1: sendTitle("");sendSubTitle("\uE1F1");addSound(Sound.RANDOM_TOAST);break;
+                default:
+                    //sendTitle("");break;
+
+            }
+            //sendTitle(gameRoom.cause, 2);
+            //sendSubTitle("&7将在&a"+gameRoom.gameStart+"&7秒后开始");
         }else {
             if (player.isImmobile()) {
-                sendTitle(" ", 2);
-                sendSubTitle("&a开战！");
+                sendTitle("", 2);
+                sendSubTitle("&fFight!");
                 player.setImmobile(false);
             }
         }

@@ -85,8 +85,8 @@ public class RandomJoinRunnable extends ThreadManager.AbstractBedWarRunnable {
         if(roomManager.cancel){
             return true;
         }
-        info.sendForceTitle("&6匹配中",100);
-        info.sendSubTitle(PlayerInfo.formatTime1((int)(System.currentTimeMillis() - i.time.getTime()) / 1000));
+        //info.sendForceTitle("&6匹配中",100);
+        //info.sendSubTitle(PlayerInfo.formatTime1((int)(System.currentTimeMillis() - i.time.getTime()) / 1000));
 
         String input = i.name;
         ArrayList<String> names = WarBridgeMain.getMenuRoomManager().getNames();

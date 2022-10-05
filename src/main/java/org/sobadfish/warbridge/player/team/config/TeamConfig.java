@@ -17,13 +17,17 @@ public class TeamConfig {
 
     private String nameColor;
 
+    /**团队的图标*/
+    private String nameUnicode;
+
     private Item blockWoolColor;
 
     private BlockColor rgb;
 
-    private TeamConfig(String name, String nameColor, Item blockWoolColor, BlockColor rgb){
+    private TeamConfig(String name, String nameColor,String nameUnicode, Item blockWoolColor, BlockColor rgb){
         this.name = name;
         this.nameColor = nameColor;
+        this.nameUnicode = nameUnicode;
         this.blockWoolColor = blockWoolColor;
         this.rgb = rgb;
     }
@@ -44,14 +48,19 @@ public class TeamConfig {
         return nameColor;
     }
 
+    public String getNameUnicode(){
+        return nameUnicode;
+    }
+
     public static TeamConfig getInstance(Map<?,?> map){
         String name = map.get("name").toString();
         String nameColor = map.get("nameColor").toString();
+        String nameUnicode = map.get("nameUnicode").toString();
         Map<?,?> m = (Map<?,?>) map.get("rgb");
         int r = Integer.parseInt(m.get("r").toString());
         int g = Integer.parseInt(m.get("g").toString());
         int b = Integer.parseInt(m.get("b").toString());
-        return new TeamConfig(name,nameColor, Item.fromString(map.get("blockWoolColor")
+        return new TeamConfig(name,nameColor,nameUnicode, Item.fromString(map.get("blockWoolColor")
                 .toString()),new BlockColor(r,g,b));
     }
 

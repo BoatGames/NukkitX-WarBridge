@@ -17,7 +17,7 @@ public class FollowItem {
 
 
     public static int getIndex(){
-        return 5;
+        return 0;
     }
 
     public static Item get(){
@@ -26,7 +26,7 @@ public class FollowItem {
         CompoundTag tag = item.getNamedTag();
         tag.putString(WarBridgeMain.GAME_NAME,"follow");
         item.setNamedTag(tag);
-        item.setCustomName(TextFormat.colorize('&',"&r&l&e点我传送到玩家"));
+        item.setCustomName(TextFormat.colorize('&',"&r&l&b传送玩家 &r&7[再次手持]"));
         return item;
 
     }

@@ -62,6 +62,10 @@ public class TeamInfoConfig {
         return teamConfig.getNameColor();
     }
 
+    public String getNameUnicode(){
+        return teamConfig.getNameUnicode();
+    }
+
     public BlockColor getRgb(){
         return teamConfig.getRgb();
     }

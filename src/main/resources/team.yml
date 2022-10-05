@@ -1,6 +1,7 @@
 team:
   - name: "红队"
     nameColor: "&c"
+    nameUnicode: ""
     blockWoolColor: "35:14"
     rgb:
       r: 255
@@ -8,6 +9,7 @@ team:
       b: 0
   - name: "蓝队"
     nameColor: "&9"
+    nameUnicode: ""
     blockWoolColor: "35:11"
     rgb:
       r: 0
